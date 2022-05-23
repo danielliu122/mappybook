@@ -1,8 +1,8 @@
 {
-  "name": "nodemysql",
+  "name": "mappybook",
   "version": "1.0.0",
   "description": "Sample app for using mysql with node",
-  "main": "app.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +13,18 @@
     "express": "^4.18.1",
     "mongodb": "^4.6.0",
     "mysql": "^2.13.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielliu122/mappybook.git"
+  },
+  "keywords": [
+    "google",
+    "maps",
+    "project"
+  ],
+  "bugs": {
+    "url": "https://github.com/danielliu122/mappybook/issues"
+  },
+  "homepage": "https://github.com/danielliu122/mappybook#readme"
 }
