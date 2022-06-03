@@ -100,7 +100,7 @@ async function getLocations() {
     //console.log(result.length);
 
     // write to a new* file named 
-    fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
+    fs.writeFile(path.join(__dirname,'/locations.txt'),  JSON.stringify(locations), (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 
@@ -164,7 +164,7 @@ async function postLocation(lat,lng,content) {
     locations= getLocations(); 
 
     // update client txt for location
-    fs.appendFile('locations.txt',  JSON.stringify(toPost), (err) => {
+    fs.appendFile(path.join(__dirname,'/locations.txt'),  JSON.stringify(toPost), (err) => {
     // throws an error, you could also catch it here
     if (err) throw err;
 
