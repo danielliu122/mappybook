@@ -9,12 +9,6 @@ const express = require("express");
 const path = require('path');
 var app = express();
 
-// cors origin URL - Allow inbound traffic from origin
-corsOptions = {
-  origin: "https://mappybook.herokuapp.com/",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-app.use(cors(corsOptions));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
