@@ -10,7 +10,7 @@ function run() {
   var xhr = new XMLHttpRequest();
 
   // Making our connection  
-  var url = 'locations.txt';
+  var url = 'locations';
   xhr.open("GET", url, true);
 
   // function execute after request is successful 
