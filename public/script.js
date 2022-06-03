@@ -235,25 +235,33 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
 
         // var mapElement = document.getElementById('map');
 
-        // add location markers
-        console.log(locations);
-        for (i = 0; i < locations.length; i++) {
-          console.log(locations[i]);
-          console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
+// add location markers func
+        
+  function addlocations(locations, map){
+    for (let i = 0; i < locations.length; i++) {
+      console.log(locations[i]);
+      console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
 
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
-            map: map,
-          });
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
+        map: map,
+      });
 
-          var infowindow = new google.maps.InfoWindow({
-            content: locations[i]['content']
-          });
+      var infowindow = new google.maps.InfoWindow({
+        content: locations[i]['content']
+      });
 
-          // Now we are inside the closure or scope of this for loop,
-          // but we're calling a function that was defined in the global scope.
-          addMarkerListener(marker, infowindow);
-        }
+      // Now we are inside the closure or scope of this for loop,
+      // but we're calling a function that was defined in the global scope.
+      addMarkerListener(marker, infowindow);
+    }
+  }
+  window.addEventListener('load', (event) => {
+    console.log('page is fully loaded');
+    console.log(locations);
+    addlocations(locations,map);
+  });
+  
   
   
 function addMarkerListener(marker, infowindow) {
@@ -279,5 +287,6 @@ function addMarkerListener(marker, infowindow) {
   
 // end
 }
+
 //initAutocomplete();
 window.initAutocomplete = initAutocomplete;
