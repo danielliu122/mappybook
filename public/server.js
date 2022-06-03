@@ -65,13 +65,6 @@ const { json } = require("express/lib/response");
 const client = new MongoClient(uri);
 var locations = [];
 
-function convert(obj) {
-  return Object.keys(obj).map(key => ({
-      name: key,
-      value: obj[key],
-      type: "foo"
-  }));
-}
 
 
 
@@ -96,7 +89,7 @@ async function getLocations() {
 }
 
 
-getLocations();
+var locations =getLocations();
 
 ;(async () => {
   locations = await getLocations();
