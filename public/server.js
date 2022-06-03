@@ -91,7 +91,7 @@ async function getLocations() {
     await client.connect();
     var database = client.db('MapAppDatabase');
     // return location data
-    var result= await database.collection('Responses').find().toArray();
+    var result= await database.collection('Responses2').find().toArray();
     //result = Object.entries(result);
     //result.forEach(function(item){ delete item.id });  
 
@@ -139,7 +139,7 @@ async function postLocation(lat,lng,content) {
     console.log("location in server"+lat+lng+content);
 
     var database = client.db('MapAppDatabase');
-    var Responses = database.collection('Responses');
+    var Responses = database.collection('Responses2');
     
     
     //Query 
