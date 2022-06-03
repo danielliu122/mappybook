@@ -96,7 +96,7 @@ async function getLocations() {
 }
 
 
-//getLocations();
+getLocations();
 
 ;(async () => {
   locations = await getLocations();

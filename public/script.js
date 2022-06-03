@@ -41,6 +41,7 @@ function postLocation(location){
   http.onreadystatechange = function() {//Call a function when the state changes.
     if(http.readyState == 4 && http.status == 200) {
         alert(http.responseText);
+        http.send(params);
     }
   }
   http.send(params);
@@ -219,28 +220,11 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
   // add marker on long click
     addMarker(event.latLng, map);
 });
-  
- // Array that stores the locations and the content about each location
-        // var locations = [
-        //   {lat: 40.468766197642246,  lng: -74.44103887469822,  content: "<p>First.</p>"},
-        // ]
-
-        //Use the first location as the center
-
-        // var mapOptions = {
-        //   center: new google.maps.LatLng(locations[0]['lat'],locations[0]['lng']),
-        //   zoom: 5,
-        //   zoomControl: true,  
-        // }
-
-        // var mapElement = document.getElementById('map');
-
-// add location markers func
         
   function addlocations(locations, map){
     for (let i = 0; i < locations.length; i++) {
-      console.log(locations[i]);
-      console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
+      //console.log(locations[i]);
+      //console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
 
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
