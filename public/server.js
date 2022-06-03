@@ -99,7 +99,7 @@ async function getLocations() {
     //console.log(result );
     //console.log(result.length);
 
-    // write to a new file named 
+    // write to a new* file named 
     fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
@@ -152,6 +152,9 @@ async function postLocation(lat,lng,content) {
     Responses.insertOne(toPost);
     //clear database (not working)
     //Responses.drop();
+
+
+    //retrieve updated location in database
     (async () => {
       locations = await getLocations();
       //console.log(locations);
@@ -159,6 +162,15 @@ async function postLocation(lat,lng,content) {
       //let stringLocations= locations.toString();
     })
     getLocations(); 
+
+    // update client txt for location
+    fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
+    // throws an error, you could also catch it here
+    if (err) throw err;
+
+    // success case, the file was saved
+    console.log('locations url created!');
+  });  
   } finally {
     // Ensures that the client will close when you finish/error
     //await client.close();
