@@ -161,16 +161,29 @@ async function postLocation(lat,lng,content) {
       //console.log("server locations "+locations);
       //let stringLocations= locations.toString();
     })
-    getLocations(); 
+    locations= getLocations(); 
 
     // update client txt for location
-    fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
+    fs.appendFile('locations.txt',  JSON.stringify(toPost), (err) => {
     // throws an error, you could also catch it here
     if (err) throw err;
 
     // success case, the file was saved
-    console.log('locations url created!');
+    console.log('added location to txt');
   });  
+
+
+  //   // update client txt for location
+  //   fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
+  //   // throws an error, you could also catch it here
+  //   if (err) throw err;
+
+  //   // success case, the file was saved
+  //   console.log('locations url created!');
+  // });  
+
+  
+
   } finally {
     // Ensures that the client will close when you finish/error
     //await client.close();
