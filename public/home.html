@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -15,15 +15,8 @@
   <script type="text/javascript" src="script.js" ></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
-<body>
-<!-- partial:index.partial.html -->
 <div class="line"></div>
 
-<head>
-  <title>Places Search Box</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script type="module" type="application/javascript" src="/index.js"></script>
-</head>
 
 <div class="wrapper">
   <header role="banner">
@@ -33,7 +26,7 @@
         <li><a href="/index.html">Map</a></li>
         <li><a href="#">Media (todo)</a></li>
         <li><a href="#">Settings (todo)</a></li>
-        <li><a href="login.html">Login(todo)</a></li>
+        <li><a href="login.html">Login (todo)</a></li>
       </ul>
     </nav>
   </header>
@@ -44,30 +37,36 @@
 <html>
 
 <head>
-  <title>Add Map</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="homecss.css" />
   <script type="module" src="./index.js"></script>
 </head>
 
-<body>
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+ <main role="main">
+    <section class="sec-intro" role="section">
+      
+    </section>
+    <section class="sec-boxes" role="section">
+      <adrticle class="box">
+        <h1>Homepage</h1>
+        <h2>MappyBook is a Google Maps project that is designed to allow users to pin points to a map. Other users are able to see which points are on the map.     
+          In a business application, businesses could pin and advertise their businesses. Similarly, users could share locations they liked for others to visit.</h2>
+        Note: pins are currently stored in localstorage for demonstration
 
-  <!--The div element for the map -->
-  <div id="map"></div>
-
-  <!-- 
-     The `defer` attribute causes the callback to execute after the full HTML
-     document has been parsed. For non-blocking uses, avoiding race conditions,
-     and consistent behavior across browsers, consider loading using Promises
-     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
-    -->
-    
-  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgX38zaRqa-LTRhL-EDQBRr7E1jcnZcII&callback=initAutocomplete&libraries=places&v=weekly" >
-  </script>
-</body>
-
-</html>
-
-
-</body>
+        <h3> Functions:</h3>
+        <br>
+        <li>
+          Google Maps Search Bar
+        </li>
+        <li>
+        Long left click: create pin
+        </li>
+        <li>
+        Right click: hide pin
+        </li>
+        
+      </adrticle>
+    </section>
+   
 </html>
