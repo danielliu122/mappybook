@@ -152,8 +152,13 @@ async function postLocation(lat,lng,content) {
     Responses.insertOne(toPost);
     //clear database (not working)
     //Responses.drop();
-    locations= getLocations();
-
+    (async () => {
+      locations = await getLocations();
+      //console.log(locations);
+      //console.log("server locations "+locations);
+      //let stringLocations= locations.toString();
+    })
+    getLocations(); 
   } finally {
     // Ensures that the client will close when you finish/error
     //await client.close();
