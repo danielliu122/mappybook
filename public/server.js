@@ -31,9 +31,9 @@ app.use("/", express.static(__dirname));
 //   res.send('index.html');
 // });
 
-app.get('/locations', function(req, res){
-  res.send(locations);
-});
+// app.get('/locations', function(req, res){
+//   res.send(locations);
+// });
 app.post('/test', function(req, res, next) {
   // req.body contains the parsed xml 
   //console.log(res.body);

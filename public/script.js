@@ -169,6 +169,8 @@ function addMarker(location, map) {
     
 
     postLocation(l3);    
+    // update locations
+    run();
 
   }
   else{
