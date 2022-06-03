@@ -15,7 +15,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.use("/", express.static(__dirname + '/public'));
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use("/", express.static(__dirname));
+
+// app.get('/', function(req, res){
+//   res.send('index.html');
+// });
+
 app.get('/locations', function(req, res){
   res.send(locations);
 });
@@ -27,7 +33,6 @@ app.post('/test', function(req, res, next) {
   var location2=JSON.stringify(req.body).toString();
   console.log(location2);
 
-  let toReplace= '\'';
   let l0=location2.replaceAll(/\\/g, '');
 
   l0=l0.substring(2,l0.length-5);
@@ -99,7 +104,7 @@ async function getLocations() {
   //let stringLocations= locations.toString();
 
 // write to a new file named 
-fs.writeFile('./public/locations.txt',  JSON.stringify(locations), (err) => {
+fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
     // throws an error, you could also catch it here
     if (err) throw err;
 
