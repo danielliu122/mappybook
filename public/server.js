@@ -149,7 +149,7 @@ async function postLocation(lat,lng,content) {
     Responses.insertOne(toPost);
     //clear database (not working)
     //Responses.drop();
-    locations=getLocations();
+    getLocations();
 
   } finally {
     // Ensures that the client will close when you finish/error
