@@ -10,7 +10,7 @@ function run() {
   var xhr = new XMLHttpRequest();
 
   // Making our connection  
-  var url = '/locations.txt';
+  var url = 'locations';
   xhr.open("GET", url, true);
 
   // function execute after request is successful 
@@ -242,7 +242,7 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
   }
   window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
-    console.log(locations);
+    //console.log(locations);
     addlocations(locations,map);
   });
   
