@@ -10,7 +10,7 @@ function run() {
   var xhr = new XMLHttpRequest();
 
   // Making our connection  
-  var url = 'locations';
+  var url = '/locations';
   xhr.open("GET", url, true);
 
   // function execute after request is successful 
@@ -41,7 +41,6 @@ function postLocation(location){
   http.onreadystatechange = function() {//Call a function when the state changes.
     if(http.readyState == 4 && http.status == 200) {
         alert(http.responseText);
-        http.send(params);
     }
   }
   http.send(params);
@@ -220,11 +219,13 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
   // add marker on long click
     addMarker(event.latLng, map);
 });
+  
+// add location markers func
         
   function addlocations(locations, map){
     for (let i = 0; i < locations.length; i++) {
-      //console.log(locations[i]);
-      //console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
+      console.log(locations[i]);
+      console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
 
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
@@ -242,7 +243,7 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
   }
   window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
-    //console.log(locations);
+    console.log(locations);
     addlocations(locations,map);
   });
   

@@ -4,6 +4,15 @@ var bodyParser = require('body-parser')
 
 const fs = require('fs');
 
+// Function to get current filenames
+// in directory with specific extension
+function getFilesInDirectory() {
+  console.log("\nFiles present in directory:");
+  let files = fs.readdirSync(__dirname);
+  files.forEach(file => {
+    console.log(file);
+  });
+}
 
 var express = require("express");
 const path = require('path');
@@ -17,7 +26,6 @@ app.use(bodyParser.json())
 
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", express.static(__dirname));
-
 
 // app.get('/', function(req, res){
 //   res.send('index.html');
@@ -65,6 +73,13 @@ const { json } = require("express/lib/response");
 const client = new MongoClient(uri);
 var locations = [];
 
+function convert(obj) {
+  return Object.keys(obj).map(key => ({
+      name: key,
+      value: obj[key],
+      type: "foo"
+  }));
+}
 
 
 
@@ -80,7 +95,23 @@ async function getLocations() {
     locations=result;
     //console.log(result );
     //console.log(result.length);
-    } finally {
+
+    // write to a new file named 
+    fs.writeFile('locations',  JSON.stringify(locations), (err) => {
+      // throws an error, you could also catch it here
+      if (err) throw err;
+
+      // success case, the file was saved
+      console.log('locations url created!');
+    });  
+
+
+
+
+    } 
+    
+    
+    finally {
       // Ensures that the client will close when you finish/error
       //await client.close();
   }
@@ -89,23 +120,14 @@ async function getLocations() {
 }
 
 
-//var locations =getLocations();
+getLocations();
 
-;(async () => {
+(async () => {
   locations = await getLocations();
-  console.log("async locations" + locations);
+  //console.log(locations);
   //console.log("server locations "+locations);
   //let stringLocations= locations.toString();
-
-// write to a new file named 
-fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
-    // throws an error, you could also catch it here
-    if (err) throw err;
-
-    // success case, the file was saved
-    console.log('locations url created!');
-});
-})()
+})
 
 
 async function postLocation(lat,lng,content) {
@@ -113,8 +135,8 @@ async function postLocation(lat,lng,content) {
     await client.connect();
     console.log("location in server"+lat+lng+content);
 
-    var database = client.db('MapAppDatabase');
-    var Responses = database.collection('Responses');
+    const database = client.db('MapAppDatabase');
+    const Responses = database.collection('Responses');
     
     
     //Query 
@@ -127,6 +149,8 @@ async function postLocation(lat,lng,content) {
     Responses.insertOne(toPost);
     //clear database (not working)
     //Responses.drop();
+    locations=getLocations();
+
   } finally {
     // Ensures that the client will close when you finish/error
    // client.close();
