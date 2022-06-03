@@ -5,11 +5,9 @@ var bodyParser = require('body-parser')
 const fs = require('fs');
 
 
-const express = require("express");
+var express = require("express");
 const path = require('path');
 var app = express();
-
-
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -17,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.use("/", express.static(path.join (__dirname, 'public')));
+app.use("/", express.static(__dirname + '/public'));
 app.get('/locations', function(req, res){
   res.send(locations);
 });
@@ -46,14 +44,10 @@ app.post('/test', function(req, res, next) {
 
 });
 
-// app.listen(3000, function () {
-//   console.log("Server is running on localhost3000");
-// });
+app.listen(3000, function () {
+  console.log("Server is running on localhost3000");
+});
 
-const PORT = process.env.PORT || 5000  // Fall back to port 5000 if process.env.PORT is not set
-
-express()
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 const uri = process.env['DB_URL'];
