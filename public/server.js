@@ -98,7 +98,7 @@ async function getLocations() {
   //let stringLocations= locations.toString();
 
 // write to a new file named 
-fs.writeFile('locations',  JSON.stringify(locations), (err) => {
+fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
     // throws an error, you could also catch it here
     if (err) throw err;
 
