@@ -67,10 +67,10 @@ app.listen(process.env.PORT || 3000);
 const uri = process.env['DB_URL'];
 
 
-const { MongoClient, FindCursor, Db } = require("mongodb");
+var { MongoClient, FindCursor, Db } = require("mongodb");
 const { monitorEventLoopDelay } = require("perf_hooks");
 const { json } = require("express/lib/response");
-const client = new MongoClient(uri);
+var client = new MongoClient(uri);
 var locations = [];
 
 function convert(obj) {
@@ -80,13 +80,16 @@ function convert(obj) {
       type: "foo"
   }));
 }
+// //connect to mongo db
+// client.connect();
+
 
 
 
 async function getLocations() {
   try {
     await client.connect();
-    const database = client.db('MapAppDatabase');
+    var database = client.db('MapAppDatabase');
     // return location data
     var result= await database.collection('Responses').find().toArray();
     //result = Object.entries(result);
@@ -135,8 +138,8 @@ async function postLocation(lat,lng,content) {
     await client.connect();
     console.log("location in server"+lat+lng+content);
 
-    const database = client.db('MapAppDatabase');
-    const Responses = database.collection('Responses');
+    var database = client.db('MapAppDatabase');
+    var Responses = database.collection('Responses');
     
     
     //Query 
@@ -153,7 +156,8 @@ async function postLocation(lat,lng,content) {
 
   } finally {
     // Ensures that the client will close when you finish/error
-   // client.close();
+    //await client.close();
   }
+  //client = new MongoClient(uri);
 }
 //postLocation().catch(console.dir);
