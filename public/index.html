@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Web Design Final Project (MappyBook)</title>
+
+  <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300'>
+  <link  rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700'><link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="module" src="/server.js"></script>
+  <script type="text/javascript" src="/server.js"></script>
+
+  <script type="text/javascript" src="script.js" ></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="line"></div>
+
+<head>
+  <title>Places Search Box</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script type="module" type="application/javascript" src="/index.js"></script>
+</head>
+
+<div class="wrapper">
+  <header role="banner">
+    <nav role="navigation">
+      <h1><a href="https://codepen.io/danielliu122/pen/yLvYdQr">MappyBook</a></h1>
+      <ul class="nav-ul">
+        <li><a href="#">Map</a></li>
+        <li><a href="#">Media (todo)</a></li>
+        <li><a href="#">Settings (todo)</a></li>
+        <li><a href="https://codepen.io/danielliu122/pen/zYRvgyz">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main role="main">
+  </main>
+</div>
+<div class="line"></div>
+<html>
+
+<head>
+  <title>Add Map</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+
+  <!--The div element for the map -->
+  <div id="map"></div>
+
+  <!-- 
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgX38zaRqa-LTRhL-EDQBRr7E1jcnZcII&callback=initAutocomplete&libraries=places&v=weekly" >
+  </script>
+</body>
+
+</html>
+
+
+</body>
+</html>

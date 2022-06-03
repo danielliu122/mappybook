@@ -1,30 +1,25 @@
 {
   "name": "mappybook",
   "version": "1.0.0",
-  "description": "Sample app for using mysql with node",
-  "main": "script.js",
+  "description": "Google maps project for sharing pinned locations",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mongodb": "^4.6.0",
-    "mysql": "^2.13.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danielliu122/mappybook.git"
   },
-  "keywords": [
-    "google",
-    "maps",
-    "project"
-  ],
+  "author": "dan liu",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/danielliu122/mappybook/issues"
   },
-  "homepage": "https://github.com/danielliu122/mappybook#readme"
+  "homepage": "https://github.com/danielliu122/mappybook#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongodb": "^4.6.0"
+  }
 }
