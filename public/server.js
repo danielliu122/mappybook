@@ -4,15 +4,15 @@ var bodyParser = require('body-parser')
 
 const fs = require('fs');
 
-// Function to get current filenames
-// in directory with specific extension
-function getFilesInDirectory() {
-  console.log("\nFiles present in directory:");
-  let files = fs.readdirSync(__dirname);
-  files.forEach(file => {
-    console.log(file);
-  });
-}
+// // Function to get current filenames
+// // in directory with specific extension
+// function getFilesInDirectory() {
+//   console.log("\nFiles present in directory:");
+//   let files = fs.readdirSync(__dirname);
+//   files.forEach(file => {
+//     console.log(file);
+//   });
+// }
 
 var express = require("express");
 const path = require('path');
@@ -100,7 +100,7 @@ async function getLocations() {
     //console.log(result.length);
 
     // write to a new file named 
-    fs.writeFile('locations',  JSON.stringify(locations), (err) => {
+    fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
       // throws an error, you could also catch it here
       if (err) throw err;
 
