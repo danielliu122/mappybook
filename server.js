@@ -5,7 +5,7 @@ var bodyParser = require('body-parser')
 const fs = require('fs');
 
 
-var express = require("express");
+const express = require("express");
 const path = require('path');
 var app = express();
 
@@ -44,10 +44,14 @@ app.post('/test', function(req, res, next) {
 
 });
 
-app.listen(3000, function () {
-  console.log("Server is running on localhost3000");
-});
+// app.listen(3000, function () {
+//   console.log("Server is running on localhost3000");
+// });
 
+const PORT = process.env.PORT || 5000  // Fall back to port 5000 if process.env.PORT is not set
+
+express()
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
 const uri = process.env['DB_URL'];
