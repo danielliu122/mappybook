@@ -123,7 +123,7 @@ async function getLocations() {
 }
 
 
-getLocations();
+locations= getLocations();
 
 (async () => {
   locations = await getLocations();
