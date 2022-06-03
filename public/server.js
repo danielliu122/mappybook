@@ -64,7 +64,7 @@ app.post('/test', function(req, res, next) {
 app.listen(process.env.PORT || 3000);
 
 
-const uri = process.env['DB_URL'];
+var uri = process.env['DB_URL'];
 
 
 var { MongoClient, FindCursor, Db } = require("mongodb");
