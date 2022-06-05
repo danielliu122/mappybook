@@ -47,10 +47,6 @@ function postLocation(location){
 }
 //------------------------------------------------------------------------
 
-// In the following example, markers appear when the user clicks on the map.
-// Each marker is labeled with a single alphabetical character.
-const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let labelIndex = 0;
 
 
 // This example adds a search box to a map, using the Google Place Autocomplete
@@ -137,53 +133,52 @@ function initAutocomplete() {
   
  // Adds a marker to the map and saves user data.
 function addMarker(location, map) {
+  var usrInput = prompt("Classify this place with a short name; ex: food (Wendy's), event (), recreation (park)" , "");
+  if (usrInput == null){
+    // do nothing
+     //er.setMap(null);
+  }
+  else if (usrInput.length>=3 && usrInput.length<=50){ //relevant name
+    var usrInput2 = prompt("Write a review, comment, or something about this place (if you want)* *posts lower than 5 characters will not be accepted; ex: food, event, recreation", "");
+    if (usrInput2.length>=5 && usrInput2.length<=500){
+      // save location to database
+      console.log("saving location..."+ location);
+      let temp = location.toString().split(",");
+      console.log(temp);
+      let l1= temp[0].slice(1);
+      console.log("l1"+ l1);
+      let l2= temp[1].slice(0, temp[1].length - 1);
+      var l3  = { "lat": l1,  "lng": l2,  "title": usrInput, "content": usrInput2};
+      l3=JSON.stringify(l3);
+      console.log(l3 + " "+ typeof l3);
+
+      postLocation(l3);  
+
+      // update locations
+      run();
+    }
+  }
+
   // Add the marker at the clicked location, and add the next-available label
   // from the array of alphabetical characters.
   var marker = new google.maps.Marker({ 
     draggable: true, 
     position: location,
-    label: labels[labelIndex++ % labels.length],
+    label: usrInput,
     map: map,
   });
-     marker.addListener('rightclick', function() {
+  marker.addListener('rightclick', function() {
     console.log("marker clicked");
     //marker.setMap(null);
     marker.setVisible(false);
   });
-  var usrInput = prompt("Write something about this place. (if you want)", "");
-  if (usrInput == null){
-     marker.setMap(null);
-  }
-  else if (usrInput.length>7){ //relevant post
-    // save location to database
-    console.log("saving location..."+ location);
-    let temp2= ",,,";
-    let temp = location.toString().split(",");
-    console.log(temp);
-    let l1= temp[0].slice(1);
-    console.log("l1"+ l1);
-    let l2= temp[1].slice(0, temp[1].length - 1);
-    var l3  = { "lat": l1,  "lng": l2,  "content": usrInput};
-    l3=JSON.stringify(l3);
-    console.log(l3 + " "+ typeof l3);
-    
-
-    postLocation(l3);    
-    // update locations
-    run();
-
-  }
-  else{
-      marker.setMap(null);
-      infowindow.close();
-  }
-     var infowindow = new google.maps.InfoWindow({
-            content:usrInput
-          });
+  var infowindow = new google.maps.InfoWindow({
+    content:usrInput2
+  });
+  
   addMarkerListener(marker, infowindow);
-  
-  
-}
+  //end of addmarker
+  }
   
 // longCLick function (to add marker)
 function LongClick(map, length) {
@@ -232,6 +227,7 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
         map: map,
+        label: locations[i]['title']
       });
 
       var infowindow = new google.maps.InfoWindow({

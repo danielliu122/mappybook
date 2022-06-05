@@ -48,13 +48,14 @@ app.post('/test', function(req, res, next) {
   console.log("lo "+l0);
 
   let lat=l0.substring(l0.indexOf("lat")+6,l0.indexOf("lng")-3);
-  let lng=l0.substring(l0.indexOf("lng")+7,l0.indexOf("content")-3);;
+  let lng=l0.substring(l0.indexOf("lng")+7,l0.indexOf("title")-3);
+
+  let title= l0.substring(l0.indexOf("title")+8,l0.indexOf("content")-3);
   let content= l0.substring(l0.indexOf("content")+10,l0.length-2);
 
 
-
   //console.log("location in FINAL"+location2 +typeof location2);
-  postLocation(lat,lng,content);
+  postLocation(lat,lng,title,content);
 
 });
 
@@ -91,7 +92,7 @@ async function getLocations() {
     await client.connect();
     var database = client.db('MapAppDatabase');
     // return location data
-    var result= await database.collection('Responses2').find().toArray();
+    var result= await database.collection('Responses3').find().toArray();
     //result = Object.entries(result);
     //result.forEach(function(item){ delete item.id });  
 
@@ -133,13 +134,13 @@ locations= getLocations();
 })
 
 
-async function postLocation(lat,lng,content) {
+async function postLocation(lat,lng,title,content) {
   try {
     await client.connect();
-    console.log("location in server"+lat+lng+content);
+    console.log("location in server"+lat+lng+title+content);
 
     var database = client.db('MapAppDatabase');
-    var Responses = database.collection('Responses2');
+    var Responses = database.collection('Responses3');
     
     
     //Query 
@@ -147,6 +148,7 @@ async function postLocation(lat,lng,content) {
     var toPost =  Responses.insertOne({
       lat: lat,
       lng: lng,
+      title: title,
       content: content
     });
     Responses.insertOne(toPost);
