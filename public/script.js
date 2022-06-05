@@ -61,7 +61,7 @@ function initAutocomplete() {
   //locations= getLocations();
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.468766197642246,  lng: -74.44103887469822, },
-    zoom: 13,
+    zoom: 5,
     mapTypeId: "roadmap",
   });
   
@@ -175,7 +175,7 @@ function addMarker(location, map) {
   var infowindow = new google.maps.InfoWindow({
     content:usrInput2
   });
-  
+
   addMarkerListener(marker, infowindow);
   //end of addmarker
   }
