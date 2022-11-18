@@ -24,7 +24,7 @@ app.listen('3000', () => {
 const db = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'aazaq1',
+    password : '****q1',
     database : 'nodemysql'
 });
 
