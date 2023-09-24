@@ -34,7 +34,7 @@ app.use("/", express.static(__dirname));
 // app.get('/locations', function(req, res){
 //   res.send(locations);
 // });
-app.post('/test', function(req, res, next) {
+app.post('/test', async (req, res) => {
   // req.body contains the parsed xml 
   //console.log(res.body);
   //cannot use location as microsoft var
@@ -55,7 +55,7 @@ app.post('/test', function(req, res, next) {
 
 
   //console.log("location in FINAL"+location2 +typeof location2);
-  postLocation(lat,lng,title,content);
+  await postLocation(lat,lng,title,content);
 
 });
 
@@ -72,7 +72,8 @@ var { MongoClient, FindCursor, Db } = require("mongodb");
 const { monitorEventLoopDelay } = require("perf_hooks");
 const { json } = require("express/lib/response");
 var client = new MongoClient(uri);
-var locations = [];
+var locations = await getLocations();
+;
 
 function convert(obj) {
   return Object.keys(obj).map(key => ({
@@ -81,6 +82,7 @@ function convert(obj) {
       type: "foo"
   }));
 }
+
 // //connect to mongo db
 // client.connect();
 
@@ -124,14 +126,8 @@ async function getLocations() {
 }
 
 
-locations= getLocations();
+// locations= await getLocations();
 
-(async () => {
-  locations = await getLocations();
-  //console.log(locations);
-  //console.log("server locations "+locations);
-  //let stringLocations= locations.toString();
-})
 
 
 async function postLocation(lat,lng,title,content) {
@@ -157,13 +153,7 @@ async function postLocation(lat,lng,title,content) {
 
 
     //retrieve updated location in database
-    (async () => {
-      locations = await getLocations();
-      //console.log(locations);
-      //console.log("server locations "+locations);
-      //let stringLocations= locations.toString();
-    })
-    locations= getLocations(); 
+    locations= await getLocations(); 
 
     // update client txt for location
     fs.appendFile(path.join(__dirname,'/locations.txt'),  JSON.stringify(toPost), (err) => {
