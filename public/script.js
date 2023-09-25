@@ -35,7 +35,7 @@ function postLocation(location){
   const req = new XMLHttpRequest();
   req.addEventListener("load", reqListener);
   req.open("POST", "/");
-  req.send(params);
+  req.send(location);
 }
 //------------------------------------------------------------------------
 
