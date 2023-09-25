@@ -25,7 +25,6 @@ function run() {
   // Sending our request 
   xhr.send();
 }
-run();
 //get location url call
 
 function postLocation(location){
@@ -64,6 +63,8 @@ function initAutocomplete() {
     zoom: 5,
     mapTypeId: "roadmap",
   });
+  run();
+
 
   console.log(locations);
   addlocations(locations,map);
