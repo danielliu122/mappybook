@@ -65,10 +65,10 @@ function initAutocomplete() {
   });
   run();
   setTimeout(() => {
-    console.log("Delayed for 5 seconds.");
+    console.log("Delayed for 1 seconds.");
     console.log(locations);
     addlocations(locations,map);
-  }, "5000");
+  }, "1000");
   
 
   console.log(locations);
