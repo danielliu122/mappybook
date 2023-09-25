@@ -25,6 +25,9 @@ function run() {
   // Sending our request 
   xhr.send();
 }
+function reqListener() {
+  console.log(this.responseText);
+}
 //get location url call
 
 function postLocation(location){
