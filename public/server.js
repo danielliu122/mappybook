@@ -34,7 +34,7 @@ app.use("/", express.static(__dirname));
 // app.get('/locations', function(req, res){
 //   res.send(locations);
 // });
-app.post('/test', function(req, res, next) {
+app.post('/', function(req, res, next) {
   // req.body contains the parsed xml 
   //console.log(res.body);
   //cannot use location as microsoft var
@@ -108,12 +108,7 @@ async function getLocations() {
       // success case, the file was saved
       console.log('locations url created!');
     });  
-
-
-
-
     } 
-    
     
     finally {
       // Ensures that the client will close when you finish/error
@@ -122,12 +117,6 @@ async function getLocations() {
   console.log(locations);
   return locations;
 }
-
-
-locations= await getLocations();
-
-
-
 
 async function postLocation(lat,lng,title,content) {
   try {
@@ -152,13 +141,7 @@ async function postLocation(lat,lng,title,content) {
 
 
     //retrieve updated location in database
-    (async () => {
-      locations = await getLocations();
-      //console.log(locations);
-      //console.log("server locations "+locations);
-      //let stringLocations= locations.toString();
-    })
-    locations= getLocations(); 
+    locations= await getLocations(); 
 
     // update client txt for location
     fs.appendFile(path.join(__dirname,'/locations.txt'),  JSON.stringify(toPost), (err) => {

@@ -30,7 +30,7 @@ function run() {
 function postLocation(location){
   console.log("location in client"+ location);
   var http = new XMLHttpRequest();
-  var url = '/test';
+  var url = '/';
   var params = location;
   http.open('POST', url, true);
 
