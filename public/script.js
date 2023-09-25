@@ -4,10 +4,6 @@
 //get location url call
 var locations=[];
 
-// add location markers func
-        
-run(); 
-
 function run() {
   
   // Creating Our XMLHttpRequest object 
@@ -29,7 +25,7 @@ function run() {
   // Sending our request 
   xhr.send();
 }
-
+run();
 //get location url call
 
 function postLocation(location){
@@ -62,7 +58,7 @@ function postLocation(location){
 
 function initAutocomplete() {
   console.log("initializing mapscript...");
-  
+  //locations= getLocations();
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.468766197642246,  lng: -74.44103887469822, },
     zoom: 5,
@@ -82,7 +78,7 @@ function initAutocomplete() {
     searchBox.setBounds(map.getBounds());
   });
 
-  let markers = locations;
+  let markers = [];
 
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
@@ -133,7 +129,7 @@ function initAutocomplete() {
       }
     });
     map.fitBounds(bounds);
-    });
+  });
   
  // Adds a marker to the map and saves user data.
 function addMarker(location, map) {
@@ -221,8 +217,32 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
     addMarker(event.latLng, map);
 });
   
+// add location markers func
+        
+  function addlocations(locations, map){
+    for (let i = 0; i < locations.length; i++) {
+      console.log(locations[i]);
+      console.log("Adding marker at lat="+ locations[i]["lat"] + ", long=" + locations[i]['lng']);
+
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i]["lat"], locations[i]['lng']),
+        map: map,
+        label: locations[i]['title']
+      });
+
+      var infowindow = new google.maps.InfoWindow({
+        content: locations[i]['content']
+      });
+
+      // Now we are inside the closure or scope of this for loop,
+      // but we're calling a function that was defined in the global scope.
+      addMarkerListener(marker, infowindow);
+    }
+  }
   window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
+    console.log(locations);
+    addlocations(locations,map);
   });
   
   
@@ -245,7 +265,9 @@ function addMarkerListener(marker, infowindow) {
     infowindow.close();
   });
       } 
-
+  
+  
+  
 // end
 }
 
