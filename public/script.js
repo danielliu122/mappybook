@@ -58,13 +58,17 @@ function postLocation(location){
 
 function initAutocomplete() {
   console.log("initializing mapscript...");
-  //locations= getLocations();
+
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 40.468766197642246,  lng: -74.44103887469822, },
     zoom: 5,
     mapTypeId: "roadmap",
   });
+
+  console.log(locations);
+  addlocations(locations,map);
   
+
   // Create the search box and link it to the UI element.
   const input = document.getElementById("pac-input");
   const searchBox = new google.maps.places.SearchBox(input);
@@ -241,8 +245,8 @@ google.maps.event.addListener(map, 'LongClick', function(event) {
   }
   window.addEventListener('load', (event) => {
     console.log('page is fully loaded');
-    console.log(locations);
-    addlocations(locations,map);
+    // console.log(locations);
+    // addlocations(locations,map);
   });
   
   
