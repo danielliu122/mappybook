@@ -124,14 +124,9 @@ async function getLocations() {
 }
 
 
-locations= getLocations();
+locations= await getLocations();
 
-(async () => {
-  locations = await getLocations();
-  //console.log(locations);
-  //console.log("server locations "+locations);
-  //let stringLocations= locations.toString();
-})
+
 
 
 async function postLocation(lat,lng,title,content) {
