@@ -37,6 +37,7 @@ app.use("/", express.static(__dirname));
 
 app.post('/', function(req, res, next) {
   //console.log(req.body);
+  res.write("hello world");
   var location2=JSON.stringify(req.body).toString();
   console.log(location2);
 
