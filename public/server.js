@@ -34,7 +34,7 @@ app.use("/", express.static(__dirname));
 // app.get('/locations', function(req, res){
 //   res.send(locations);
 // });
-app.post('/test', function(req, res, next) {
+app.post('/', function(req, res, next) {
   console.log(req.body);
   var location2=JSON.stringify(req.body).toString();
   console.log(location2);

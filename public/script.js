@@ -34,7 +34,7 @@ function postLocation(location){
   console.log("location in client"+ location);
   const req = new XMLHttpRequest();
   req.addEventListener("load", reqListener);
-  req.open("POST", "/test");
+  req.open("POST", "/");
   req.send(location);
 }
 //------------------------------------------------------------------------
