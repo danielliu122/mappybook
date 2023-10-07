@@ -35,7 +35,9 @@ app.use("/", express.static(__dirname));
 //   res.send(locations);
 // });
 app.post('/', function(req, res, next) {
-  console.log(req.body);
+  //console.log(req.body);
+  //res.send('<script>console.log("hello world!")</script>')
+  
   var location2=JSON.stringify(req.body).toString();
   console.log(location2);
 
