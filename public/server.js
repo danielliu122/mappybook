@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 var bodyParser = require('body-parser')
 
 
@@ -54,7 +54,15 @@ app.post('/', function(req, res, next) {
 
 
   //console.log("location in FINAL"+location2 +typeof location2);
-  postLocation(lat,lng,title,content);
+     // write to a new* file named 
+     fs.writeFile(path.join(__dirname,'/locations.txt'),  JSON.stringify(locations), (err) => {
+      // throws an error, you could also catch it here
+      if (err) throw err;
+
+      // success case, the file was saved
+      console.log('locations url created!');
+    }); 
+  //postLocation(lat,lng,title,content);
 
 });
 
