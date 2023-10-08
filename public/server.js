@@ -16,13 +16,10 @@ app.use(bodyParser.json())
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", express.static(__dirname));
 
-app.get('/', function(req, res){
-  res.send('index.html');
-});
 
 app.post('/', function(req, res, next) {
   //console.log(req.body);
-  res.write("hello world");
+  res.send("hello world");
   var location2=JSON.stringify(req.body).toString();
   console.log(location2);
 
