@@ -1,22 +1,11 @@
-//require("dotenv").config();
-var bodyParser = require('body-parser')
-
-
-const fs = require('fs');
-
-// // Function to get current filenames
-// // in directory with specific extension
-// function getFilesInDirectory() {
-//   console.log("\nFiles present in directory:");
-//   let files = fs.readdirSync(__dirname);
-//   files.forEach(file => {
-//     console.log(file);
-//   });
-// }
-
 var express = require("express");
 const path = require('path');
 var app = express();
+var bodyParser = require('body-parser')
+const fs = require('fs');
+
+require("dotenv").config();
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -27,13 +16,6 @@ app.use(bodyParser.json())
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", express.static(__dirname));
 
-// app.get('/', function(req, res){
-//   res.send('index.html');
-// });
-
-// app.get('/locations', function(req, res){
-//   res.send(locations);
-// });
 
 app.post('/', function(req, res, next) {
   //console.log(req.body);
@@ -69,6 +51,7 @@ app.post('/', function(req, res, next) {
 // app.listen(3000, function () {
 //   console.log("Server is running on localhost3000");
 // });
+
 app.listen(process.env.PORT || 3000);
 
 
@@ -81,13 +64,6 @@ const { json } = require("express/lib/response");
 var client = new MongoClient(uri);
 var locations = [];
 
-function convert(obj) {
-  return Object.keys(obj).map(key => ({
-      name: key,
-      value: obj[key],
-      type: "foo"
-  }));
-}
 // //connect to mongo db
 // client.connect();
 
