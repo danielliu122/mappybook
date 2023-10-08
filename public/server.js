@@ -17,12 +17,11 @@ app.use(bodyParser.json())
 app.use("/", express.static(__dirname));
 
 
-app.post('/', function(req, res, next) {
+app.post('/',  function requestHandler(req, res) {
   //console.log(req.body);
   //res.send("hello world");
   var location2=JSON.stringify(req.body).toString();
-  console.log(location2);
-
+  res.send('<script>console.log("test")</script>') 
   let l0=location2.replaceAll(/\\/g, '');
 
   l0=l0.substring(2,l0.length-5);
@@ -136,16 +135,7 @@ async function postLocation(lat,lng,title,content) {
   });  
 
 
-  //   // update client txt for location
-  //   fs.writeFile('locations.txt',  JSON.stringify(locations), (err) => {
-  //   // throws an error, you could also catch it here
-  //   if (err) throw err;
 
-  //   // success case, the file was saved
-  //   console.log('locations url created!');
-  // });  
-
-  
 
   } finally {
     // Ensures that the client will close when you finish/error
